@@ -3,29 +3,35 @@
 }
 
 body {
+    background-color: #10002b;
+    height: 100%;
+    background-size: cover;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
 .register-tile {
-    background-color: #f2f2f2;
+    color:white;
+    background-color: #10002b;
     padding: 20px;
-    
     text-align: center;
 }
 
 h1 {
+    color: white;
     font-size: 36px;
     margin-bottom: 20px;
 }
 
 form {
+    color: #e0aaff;
     width: 700px;
     display: inline-block;
         text-align: left;
-        border: 2px solid #ccc;
+        border: 2px solid #52b69a;
         padding: 20px;
         border-radius: 5px;
+        margin-bottom: 100px;
 }
 
 label {
@@ -46,8 +52,8 @@ select {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
+    background-color:#e0aaff;
+    color:#10002b;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -56,7 +62,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color:#9d4edd;
 }
 input,
 select,

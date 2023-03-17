@@ -52,7 +52,7 @@ i {
     left: 1200px;
     /* adjust the right position to move the icon closer or further from the input field */
     transform: translateY(-40%);
-    color: #999;
+    color: white;
     /* change the color of the icon */
     pointer-events: none;
     /* make the icon non-clickable */
