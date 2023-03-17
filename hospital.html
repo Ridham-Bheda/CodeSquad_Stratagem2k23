@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\css\hospital.css">
+    <!-- CSS Bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="register-tile">
+    <h1>Register Yourself</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+<label for="photo">Upload Photo:</label>
+<input type="file" id="photo" name="photo" accept="image/*" required>
+<img id="photo-preview" src="#" alt="Photo Preview">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+
+
+    // get form and fields
+        const form = document.querySelector('form');
+        const nameField = form.querySelector('#name');
+        const dobField = form.querySelector('#dob');
+        const genderField = form.querySelector('#gender');
+        const emailField = form.querySelector('#email');
+        const phoneField = form.querySelector('#phone');
+        const photoField = form.querySelector('#photo');
+        const photoPreview = form.querySelector('#photo-preview');
+
+        // validate form on submit
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // validate name
+            if (nameField.value.trim() === '') {
+                alert('Please enter your name.');
+                nameField.focus();
+                return;
+            }
+
+            // validate date of birth
+            if (dobField.value === '') {
+                alert('Please enter your date of birth.');
+                dobField.focus();
+                return;
+            }
+
+            // validate gender
+            if (genderField.value === '') {
+                alert('Please select your gender.');
+                genderField.focus();
+                return;
+            }
+
+            // validate email
+            if (emailField.value.trim() === '') {
+                alert('Please enter your email address.');
+                emailField.focus();
+                return;
+            }
+
+            // validate phone number
+            if (phoneField.value.trim() === '') {
+                alert('Please enter your phone number.');
+                phoneField.focus();
+                return;
+            }
+
+            // submit form
+            form.submit();
+        });
+
+        // display preview of uploaded photo
+        photoField.addEventListener('change', function () {
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                photoPreview.src = reader.result;
+            }
+
+            reader.readAsDataURL(photoField.files[0]);
+        });
+
+</script>
+
+</body>
+</html>

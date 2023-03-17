@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\css\admin.css">
+<!-- CSS bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>    
+    </nav>
+ 
+<div class="container">
+    <h1>Webcam Example</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="webcam">
+                <video id="video"></video>
+                <div class="controls">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="cameraDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Allow Camera
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="cameraDropdown">
+                            <a class="dropdown-item" href="#" onclick="startCamera()">Allow Camera</a>
+                            <a class="dropdown-item" href="#" onclick="stopCamera()">Block Camera</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="takePicture()">Take Image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="preview">
+                <canvas id="canvas"></canvas>
+                <button class="btn btn-primary" onclick="verify()">Verify</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const cameraDropdown = document.getElementById('cameraDropdown');
+
+    let stream;
+
+    function startCamera() {
+        if (stream) {
+            stopCamera();
+        }
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((mediaStream) => {
+                stream = mediaStream;
+                video.srcObject = stream;
+                video.play();
+                cameraDropdown.innerHTML = 'Block Camera';
+            })
+            .catch((error) => {
+                console.error('Unable to access the camera.', error);
+            });
+    }
+
+    function stopCamera() {
+        if (!stream) {
+            return;
+        }
+
+        stream.getTracks().forEach((track) => {
+            track.stop();
+        });
+
+        video.srcObject = null;
+        cameraDropdown.innerHTML = 'Allow Camera';
+    }
+
+    function takePicture() {
+        if (!stream) {
+            return;
+        }
+
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    }
+
+    function verify() {
+        if (!stream) {
+            return;
+        }
+
+        const imageData = canvas.toDataURL();
+        console.log(imageData);
+    }
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\css\homepage.css">
+    <!-- css bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+    <!-- js bootstrap -->
+
+    <!-- Ajax bootstrap link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <title>Document</title>
+</head>
+
+<body style="background-color:black;">
+    <div class="homepage">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Guide</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+    
+    </nav>
+
+    <input type="text" id="search-bar" placeholder="Search hospitals...">
+    <i class="fas fa-search"></i>
+    <ul id="hospital-list">
+        <li> <a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Lilavati Hospital</a>
+        </li>
+        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Aims Hospital</a>
+        </li>
+        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Aims Hospital</a></li>
+        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Kamlavati Hospital</a>
+        </li>
+        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Asian Eye Center</a>
+        </li>
+    </ul>
+    </div>
+    
+    <script>
+        const searchBar = document.getElementById("search-bar");
+        const hospitalList = document.getElementById("hospital-list");
+        const hospitals = hospitalList.getElementsByTagName("li");
+
+        searchBar.addEventListener("keyup", function (event) {
+            const searchValue = event.target.value.toLowerCase();
+
+            for (let i = 0; i < hospitals.length; i++) {
+                const hospitalName = hospitals[i].textContent.toLowerCase();
+
+                if (hospitalName.includes(searchValue)) {
+                    hospitals[i].classList.add("show");
+                } else {
+                    hospitals[i].classList.remove("show");
+                }
+            }
+        });
+    </script>
+
+
+    <!-- jss Script -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
