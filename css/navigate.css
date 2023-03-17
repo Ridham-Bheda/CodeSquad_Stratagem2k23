@@ -5,15 +5,16 @@
  h5,
  h6 {
      font-family: Georgia, serif;
+     color:#B6D9E9;
  }
 
  body {
      font-family: Georgia, serif;
-     background-color: #f2f2f2;
+      background-color: #003A6C;
  }
 
  h1 {
-     color: #006699;
+    color:#B6D9E9;
      font-weight: bold;
      margin-top: 50px;
      margin-bottom: 20px;
@@ -21,12 +22,12 @@
  }
 
  p {
-     color: #333;
+     color:#B6D9E9;
      margin-bottom: 20px;
  }
 
  .btn-primary {
-     background-color: #006699;
+     background-color: #B6D9E9;
      border-color: #006699;
  }
 
@@ -45,7 +46,7 @@
  }
 
  .card h2 {
-     color: #006699;
+     color: #B6D9E9;
      font-weight: bold;
      margin-bottom: 20px;
      text-align: center;
@@ -58,6 +59,7 @@
      border: 1px solid #ccc;
      border-radius: 5px;
      margin-bottom: 50px;
+     color:#B6D9E9;
  }
 
  label {
@@ -77,8 +79,8 @@
  }
 
  input[type="submit"] {
-     background-color: #007bff;
-     color: #fff;
+     background-color: #B6D9E9;
+     color:#003A6C;
      padding: 10px 20px;
      border: none;
      border-radius: 5px;
@@ -86,5 +88,5 @@
  }
 
  input[type="submit"]:hover {
-     background-color: #0062cc;
+     background-color: #B6D9E9;
  }
