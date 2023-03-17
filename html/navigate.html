@@ -5,62 +5,14 @@
     <title>Navigation Instructions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- css link -->
+    <link rel="stylesheet" href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\css\navigate.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: Georgia, serif;
-        }
+<script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 
-        body {
-            font-family: Georgia, serif;
-            background-color: #f2f2f2;
-        }
 
-        h1 {
-            color: #006699;
-            font-weight: bold;
-            margin-top: 50px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            background-color: #006699;
-            border-color: #006699;
-        }
-
-        .btn-primary:hover {
-            background-color: #005580;
-            border-color: #005580;
-        }
-
-        .card {
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            padding: 30px;
-        }
-
-        .card h2 {
-            color: #006699;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -91,6 +43,16 @@
         <p>Watch this video for a visual guide on how to navigate through the website:</p>
 
     </div>
+    <h1>Contact Us</h1>
+<form action="mailto:cyberantproject@gmail.com" method="POST" enctype="text/plain">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea><br>
+
+    <input type="submit" value="Send">
+</form>
 </body>
 
 </html>

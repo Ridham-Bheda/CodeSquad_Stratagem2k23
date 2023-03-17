@@ -1,0 +1,59 @@
+body {
+    margin:0;
+    background-image: url("/images_bg/bg_02.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+
+#search-bar {
+    padding: 20px;
+    margin-top: 170px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-radius: 10px solid rgb(93, 93, 243);
+    width: 80%;
+    box-sizing: border-box;
+}
+
+#hospital-list li {
+    display: none;
+}
+
+#hospital-list li.show {
+    display: grid;
+}
+
+#hospital-list li{
+        background-color: white;
+        padding: 20px;
+        border-radius: 6px;
+        margin-left: 70px;
+        margin-bottom: 10px;
+        align-items: center;
+        font-size: larger;
+        width: 50%;
+        box-sizing: border-box;
+
+    
+}
+
+i {
+    position: absolute;
+    top: 43%;
+    right: 10px;
+    font-size: 80px;
+    left: 1200px;
+    /* adjust the right position to move the icon closer or further from the input field */
+    transform: translateY(-40%);
+    color: #999;
+    /* change the color of the icon */
+    pointer-events: none;
+    /* make the icon non-clickable */
+}
