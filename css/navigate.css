@@ -5,15 +5,16 @@
  h5,
  h6 {
      font-family: Georgia, serif;
+     color:#e0aaff;
  }
 
  body {
      font-family: Georgia, serif;
-     background-color: #f2f2f2;
+     background-color: #10002b;
  }
 
  h1 {
-     color: #006699;
+     color: white;
      font-weight: bold;
      margin-top: 50px;
      margin-bottom: 20px;
@@ -21,7 +22,7 @@
  }
 
  p {
-     color: #333;
+     color: white;
      margin-bottom: 20px;
  }
 
@@ -55,7 +56,8 @@
      max-width: 500px;
      margin-left:400px;
      padding: 20px;
-     border: 1px solid #ccc;
+     color:#e0aaff;
+     border: 1px solid #e0aaff;
      border-radius: 5px;
      margin-bottom: 50px;
  }
@@ -72,13 +74,13 @@
      width: 100%;
      padding: 10px;
      margin-bottom: 10px;
-     border: 1px solid #ccc;
+     border: 1px solid #10002b;
      border-radius: 5px;
  }
 
  input[type="submit"] {
-     background-color: #007bff;
-     color: #fff;
+     background-color: #e0aaff;
+     color:#10002b;
      padding: 10px 20px;
      border: none;
      border-radius: 5px;
@@ -86,5 +88,5 @@
  }
 
  input[type="submit"]:hover {
-     background-color: #0062cc;
+     background-color: #e0aaff;
  }
