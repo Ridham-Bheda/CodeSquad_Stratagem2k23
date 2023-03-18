@@ -1,0 +1,29 @@
+body{
+    height: 200px;
+}
+#popup{
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 0 20px 0 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+button {
+    padding: 10px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnn{
+    margin: 0 0 0 91px;
+    width: 5%;
+    height: 42px;
+}
+.verify{
+    margin: 18% 0 0 17%;
+}

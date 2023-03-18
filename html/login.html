@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+	
+	<!-- Ajax bootstrap link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+	<!-- <link rel="stylesheet" href="loginnn.css"> -->
+	<link rel="stylesheet" href="..\css\login.css">
+	<script>
+		// Initialize Firebase
+		var firebaseConfig = {
+			// Add your Firebase config here
+		};
+		firebase.initializeApp(firebaseConfig);
+
+		// Get the elements of the login form
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		var userType = document.getElementById("userType");
+
+		// Function to handle login button click
+		function login() {
+			var userEmail = email.value;
+			var userPassword = password.value;
+			var userUserType = userType.value;
+
+			firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
+			.then((userCredential) => {
+				// Signed in
+				var user = userCredential.user;
+				if (userUserType == "patient") {
+					// Redirect to patient dashboard
+					window.location.href = "patient_dashboard.html";
+				} else if (userUserType == "hospital") {
+					// Redirect to hospital dashboard
+					window.location.href = "hospital_dashboard.html";
+				}
+			})
+			.catch((error) => {
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				alert(errorMessage);
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="login">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		
+	<a class="navbar-brand" href="..\html\homepage.html">Home</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+		aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="..\html\navigate.html">Guide</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+		aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="#">Dashboard</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+		aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+		
+		
+		</nav>
+		<h1>Login Page</h1>
+
+		<form>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email"><br>
+
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password"><br>
+
+			<label for="userType">User Type:</label>
+			<select id="userType" name="userType">
+				<option value="patient">Patient</option>
+				<option value="hospital">Hospital</option>
+			</select><br>
+			<input type="button" value="Login" onclick="login()">
+		</form>
+	</div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\css\homepage.css">
+    <link rel="stylesheet" href="..\css\homepage.css">
     <!-- css bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 
@@ -20,74 +20,90 @@
 
 <body style="background-color:#10002b;">
     <div class="homepage">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg nav navbar-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="..\html\homepage.html">Heathify</a>
 
-            <a class="navbar-brand" href="#">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Guide</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-    
-    </nav>
-
-    <input type="text" id="search-bar" placeholder="Search hospitals...">
-    <i class="fas fa-search"></i>
-    <ul id="hospital-list">
-        <li> <a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Lilavati Hospital</a>
-        </li>
-        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Aims Hospital</a>
-        </li>
-        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Aims Hospital</a></li>
-        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Kamlavati Hospital</a>
-        </li>
-        <li><a href="C:\Users\Ridham\Desktop\CodeSquad_Stratagem2k23\html\hospital.html">Asian Eye Center</a>
-        </li>
-    </ul>
+        <!-- Icons -->
+        <ul class="navbar-nav d-flex flex-row me-1">
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link text-white" href="..\html\navigate.html">Guide</a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link text-white" href="..\html\signup.html">Dashboard</a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link text-white" href="..\html\homepage.html">Home</a>
+            </li>
+           
+        </ul>
     </div>
-    
-    <script>
-        const searchBar = document.getElementById("search-bar");
-        const hospitalList = document.getElementById("hospital-list");
-        const hospitals = hospitalList.getElementsByTagName("li");
 
-        searchBar.addEventListener("keyup", function (event) {
-            const searchValue = event.target.value.toLowerCase();
+    <!-- Container wrapper -->
+</nav>
 
-            for (let i = 0; i < hospitals.length; i++) {
-                const hospitalName = hospitals[i].textContent.toLowerCase();
+    <input type="text" id="search-box" placeholder="Search for hospitals...">
 
-                if (hospitalName.includes(searchValue)) {
-                    hospitals[i].classList.add("show");
-                } else {
-                    hospitals[i].classList.remove("show");
-                }
-            }
+<div id="search-results"></div>
+
+<script>
+    // Dummy data for hospitals
+    const hospitals = ['Hospital A', 'Hospital B', 'Hospital C', 'Hospital D', 'Hospital E', 'Hospital F', 'Hospital G', 'Hospital H', 'Hospital I', 'Hospital J'];
+
+    // Get search box and search results div
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+
+    // Function to filter hospitals based on search input
+    const filterHospitals = (searchInput) => {
+        const filteredHospitals = hospitals.filter(hospital => hospital.toLowerCase().includes(searchInput.toLowerCase()));
+        return filteredHospitals;
+    }
+
+    // Function to display search results
+    const displayResults = (searchInput) => {
+        // Get filtered hospitals based on search input
+        const filteredHospitals = filterHospitals(searchInput);
+
+        // Clear previous search results
+        searchResults.innerHTML = '';
+
+        // Create a list of hospitals and append to search results div
+        const hospitalList = document.createElement('ul');
+        filteredHospitals.forEach(hospital => {
+            const hospitalItem = document.createElement('li');
+            hospitalItem.textContent = hospital;
+            hospitalItem.addEventListener('click', () => {
+                searchBox.value = hospital;
+                searchResults.style.display = 'none';
+            });
+            hospitalList.appendChild(hospitalItem);
         });
-    </script>
+        searchResults.appendChild(hospitalList);
 
+        // Show search results div
+        searchResults.style.display = 'block';
+    }
 
-    <!-- jss Script -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    // Add event listener for search box input
+    searchBox.addEventListener('input', () => {
+        const searchInput = searchBox.value.trim();
+        if (searchInput === '') {
+            searchResults.style.display = 'none';
+        } else {
+            displayResults(searchInput);
+        }
+    });
 
+    // Add event listener for document click to hide search results when clicked outside of search box or search results div
+    document.addEventListener('click', (event) => {
+        if (!searchBox.contains(event.target) && !searchResults.contains(event.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+</script>
 </body>
 
 </html>

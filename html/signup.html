@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<!-- css bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+	
+	<!-- Ajax bootstrap link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
+	<link rel="stylesheet" href="..\css\signup.css">
+	<script>
+		// Initialize Firebase
+		var firebaseConfig = {
+			// Add your Firebase config here
+		};
+		firebase.initializeApp(firebaseConfig);
+
+		// Get the elements of the signup form
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		var userType = document.getElementById("userType");
+
+		// Get the patient-specific fields
+		var patientName = document.getElementById("patientName");
+		var patientDob = document.getElementById("patientDob");
+		var patientGender = document.getElementById("patientGender");
+		var patientMobileNo = document.getElementById("patientMobileNo");
+
+		// Get the hospital-specific fields
+		var hospitalName = document.getElementById("hospitalName");
+		var hospitalLocation = document.getElementById("hospitalLocation");
+		var hospitalId = document.getElementById("hospitalId");
+
+		// Function to handle signup button click
+		function signup() {
+			var userEmail = email.value;
+			var userPassword = password.value;
+			var userUserType = userType.value;
+
+			if (userUserType == "patient") {
+				var userPatientName = patientName.value;
+				var userPatientDob = patientDob.value;
+				var userPatientGender = patientGender.value;
+				var userPatientMobileNo = patientMobileNo.value;
+
+				firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword)
+				.then((userCredential) => {
+					// Signed up
+					var user = userCredential.user;
+
+					// Store patient data in Firestore
+					firebase.firestore().collection("patients").doc(user.uid).set({
+						name: userPatientName,
+						dob: userPatientDob,
+						gender: userPatientGender,
+						mobileNo: userPatientMobileNo
+					})
+					.then(() => {
+						// Redirect to patient dashboard
+						window.location.href = "patient_dashboard.html";
+					})
+					.catch((error) => {
+						alert(error.message);
+					});
+				})
+				.catch((error) => {
+					alert(error.message);
+				});
+			} else if (userUserType == "hospital") {
+				var userHospitalName = hospitalName.value;
+				var userHospitalLocation = hospitalLocation.value;
+				var userHospitalId = hospitalId.value;
+
+				firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword)
+				.then((userCredential) => {
+					// Signed up
+					var user = userCredential.user;
+
+					// Store hospital data in Firestore
+					firebase.firestore().collection("hospitals").doc(user.uid).set({
+						name: userHospitalName,
+						location: userHospitalLocation,
+						id: userHospitalId
+					})
+					.then(() => {
+						// Redirect to hospital dashboard
+						window.location.href = "hospital_dashboard.html";
+					})
+					.catch((error) => {
+						alert(error.message);
+					});
+				})
+				.catch((error) => {
+					alert(error.message);
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	
+		<a class="navbar-brand" href="..\html\homepage.html">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="..\html\navigate.html">Guide</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="#">Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	
+	
+	</nav>
+	<h1>Signup Page</h1>
+	<form>
+		
+        <label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+
+		<label for="userType">User Type:</label>
+		<select id="userType" name="userType" required>
+			<option value="">Select a user type</option>
+			<option value="patient">Patient</option>
+			<option value="hospital">Hospital</option>
+		</select>
+
+		<!-- Patient-specific fields -->
+		<div id="patientFields" style="display:none;">
+			<label for="patientName">Name:</label>
+			<input type="text" id="patientName" name="patientName" required>
+
+			<label for="patientDob">Date of Birth:</label>
+			<input type="date" id="patientDob" name="patientDob" required>
+
+			<label for="patientGender">Gender:</label>
+			<select id="patientGender" name="patientGender" required>
+				<option value="">Select a gender</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other</option>
+			</select>
+
+			<label for="patientMobileNo">Mobile No:</label>
+			<input type="tel" id="patientMobileNo" name="patientMobileNo" required>
+		</div>
+
+		<!-- Hospital-specific fields -->
+		<div id="hospitalFields" style="display:none;">
+			<label for="hospitalName">Name:</label>
+			<input type="text" id="hospitalName" name="hospitalName" required>
+
+			<label for="hospitalLocation">Location:</label>
+			<input type="text" id="hospitalLocation" name="hospitalLocation" required>
+
+			<label for="hospitalId">ID:</label>
+			<input type="text" id="hospitalId" name="hospitalId" required>
+		</div>
+	<button type="button"><a href="..\html\homepage.html">Sign Up</a></button>
+		<!-- <button type="button" onclick="signup()">Sign up</button> -->
+		<p>Already have an account? <a href="..\html\login.html">Sign in</a></p>
+	</form>
+
+	<script>
+		// Show/hide patient/hospital fields based on user type selection
+		var userType = document.getElementById("userType");
+		var patientFields = document.getElementById("patientFields");
+		var hospitalFields = document.getElementById("hospitalFields");
+
+		userType.addEventListener("change", function() {
+			if (userType.value == "patient") {
+				patientFields.style.display = "block";
+				hospitalFields.style.display = "none";
+			} else if (userType.value == "hospital") {
+				patientFields.style.display = "none";
+				hospitalFields.style.display = "block";
+			} else {
+				patientFields.style.display = "none";
+				hospitalFields.style.display = "none";
+			}
+		});
+	</script>
+</body>
+</html>

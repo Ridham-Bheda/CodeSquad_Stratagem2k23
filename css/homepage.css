@@ -9,51 +9,41 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
 }
-
-
-#search-bar {
+/* Search Bar */
+#search-box {
+    margin: 20px auto;
     padding: 20px;
-    margin-top: 170px;
-    margin-left: 70px;
-    margin-bottom: 10px;
-    align-items: center;
-    border-radius: 10px solid rgb(93, 93, 243);
-    width: 80%;
-    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 900px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    display: block;
 }
 
-#hospital-list li {
+#search-results {
+    margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 900px;
+        font-size: 16px;
+        background-color: #f2f2f2;
     display: none;
 }
 
-#hospital-list li.show {
-    display: grid;
+#search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-#hospital-list li{
-        background-color: white;
-        padding: 20px;
-        border-radius: 6px;
-        margin-left: 70px;
-        margin-bottom: 10px;
-        align-items: center;
-        font-size: larger;
-        width: 50%;
-        box-sizing: border-box;
-
-    
+#search-results li {
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
 }
 
-i {
-    position: absolute;
-    top: 43%;
-    right: 10px;
-    font-size: 80px;
-    left: 1200px;
-    /* adjust the right position to move the icon closer or further from the input field */
-    transform: translateY(-40%);
-    color: white;
-    /* change the color of the icon */
-    pointer-events: none;
-    /* make the icon non-clickable */
+#search-results li:hover {
+    background-color: #f2f2f2;
 }
